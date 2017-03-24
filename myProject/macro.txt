@@ -1,0 +1,50 @@
+Sub Group34_Click()
+Dim row, column
+Dim data
+Dim rec As Integer
+rec = 2
+
+Range("C8:Z37").Sort _
+Key1:=Range("D8"), Order1:=xlAscending
+
+Dim x As String
+Dim red, blue, green
+For i = 8 To 37
+    Sheets("Total Score").Activate
+    data = Cells(i, 12).Value
+    Sheets("Sheet6").Activate
+    x = "Rectangle " & CStr(rec)
+    rec = rec + 1
+    If data <= 2 Then
+            ActiveSheet.Shapes.Range(Array(x)).Select
+            With Selection.ShapeRange.Fill
+            .Visible = msoTrue
+            .ForeColor.ObjectThemeColor = msoThemeColorAccent2
+            .ForeColor.TintAndShade = 0
+            .Transparency = 0
+            .Solid
+            End With
+    ElseIf data <= 3 Then
+            ActiveSheet.Shapes.Range(Array(x)).Select
+            With Selection.ShapeRange.Fill
+            .Visible = msoTrue
+            .ForeColor.ObjectThemeColor = msoThemeColorAccent1
+            .ForeColor.TintAndShade = 0
+            .Transparency = 0
+            .Solid
+            End With
+    Else
+        ActiveSheet.Shapes.Range(Array(x)).Select
+        With Selection.ShapeRange.Fill
+        .Visible = msoTrue
+        .ForeColor.ObjectThemeColor = msoThemeColorAccent3
+        .ForeColor.TintAndShade = 0
+        .Transparency = 0
+        .Solid
+        End With
+    
+    End If
+    
+Next i
+ 
+End Sub
